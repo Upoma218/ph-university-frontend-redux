@@ -9,7 +9,37 @@ npm install
 npm install
 npm run dev
 npm i react-router-dom react-hook-form antd
+npm install @reduxjs/toolkit react-redux
 ```
+## Redux setup
+---
+### Paste this code in store.ts file
+
+```
+import { configureStore } from "@reduxjs/toolkit";
+
+export const store = configureStore({
+    reducer : {}
+})
+
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
+```
+### Paste this code in hooks.ts file
+
+```
+import { useDispatch, useSelector } from 'react-redux'
+import type { TypedUseSelectorHook } from 'react-redux'
+import type { RootState, AppDispatch } from './store'
+
+// Use throughout your app instead of plain `useDispatch` and `useSelector`
+export const useAppDispatch: () => AppDispatch = useDispatch
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+```
+
 ## Create git repo and Add project with repo
 ---
 
@@ -40,6 +70,10 @@ git push -u origin main
 * ___routes___ (for all types of routes) : src > __`routes`__
 
 * ___redux___ (for all redux application files) : src > __`redux`__
+
+* ___store.ts___ (for store reducer of redux) : src > redux > __`store.ts`__
+
+* ___hooks.ts___ (for hooks reducer of redux) : src > redux > __`hooks.ts`__
 
 * ___styles___ (for all styles) : src > __`styles`__
 
