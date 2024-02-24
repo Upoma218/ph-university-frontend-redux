@@ -4,7 +4,7 @@ import { useGetAllStudentsQuery } from "../../../redux/features/admin/userManage
 import { TQueryParam, TStudentData } from "../../../types";
 import { Link } from "react-router-dom";
 
-export type TTableData = Pick<TStudentData, "fullname" | "id"| "email"| "contactNo">;
+export type TTableData = Pick<TStudentData, "fullName" | "id"| "email"| "contactNo">;
 
 const StudentData = () => {
   const [params, setParams] = useState<TQueryParam[] | []>([]);
@@ -19,9 +19,9 @@ const StudentData = () => {
 
   const metaData = studentData?.data?.meta
 
-  const tableData = studentData?.data?.result?.map(({ _id, fullname, id, email, contactNo }) => ({
+  const tableData = studentData?.data?.result?.map(({ _id, fullName, id, email, contactNo }) => ({
     key: _id,
-    fullname,
+    fullName,
     email,
     contactNo,
     id,
@@ -30,8 +30,8 @@ const StudentData = () => {
   const columns: TableColumnsType<TTableData> = [
     {
       title: "Name",
-      key: "fullname",
-      dataIndex: "fullname",
+      key: "fullName",
+      dataIndex: "fullName",
     },
     {
       title: "Roll No",

@@ -87,6 +87,28 @@ import { TCourse, TSemester } from '../../../types/courseManagement.type';
         }),
         invalidatesTags: ['courses'],
       }),
+      getCourseFaculties: builder.query({
+        query: (id) => {
+          return {
+            url: `/courses/${id}/get-faculties`,
+            method: 'GET',
+          };
+        },
+        transformResponse: (response: TResponseRedux<any>) => {
+          return {
+            data: response.data,
+            meta: response.meta,
+          };
+        },
+      }),
+      addOfferCourse: builder.mutation({
+        query: (data) => ({
+          url: `offered-course/create-offered-course`,
+          method: 'POST',
+          body: data,
+        }),
+        invalidatesTags: ['courses'],
+      }),
     }),
   });
   
@@ -97,4 +119,6 @@ import { TCourse, TSemester } from '../../../types/courseManagement.type';
     useGetAllCoursesQuery,
     useAddCourseMutation,
     useAddFacultiesMutation,
+    useAddOfferCourseMutation,
+    useGetCourseFacultiesQuery
   } = courseManagementApi;
