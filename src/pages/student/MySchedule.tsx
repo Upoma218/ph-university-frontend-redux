@@ -1,5 +1,5 @@
+import { Col, Row } from "antd";
 import { useGetAllEnrolledCoursesQuery } from "../../redux/features/student/studentCourseManagement.api";
-
 
 const MySchedule = () => {
   const { data } = useGetAllEnrolledCoursesQuery(undefined);
@@ -7,17 +7,29 @@ const MySchedule = () => {
 
   return (
     <div>
-      {data?.data?.map((item : any) => {
+      {data?.data?.map((item: any) => {
         return (
-          <div>
-            <div>{item.course.title}</div>
-            <div>{item.offeredCourse.section}</div>
-            <div>
+          <Row
+            justify="space-between"
+            align="middle"
+            style={{
+              borderTop: "solid #d4d4d4 2px",
+              padding: "10px",
+              width: "50%",
+              border: "solid #d4d4d4 2px",
+              margin: "20px",
+            }}
+            gutter={30}
+          >
+            <Col>Course Name : {item.course.title}</Col>
+            <Col>Section: {item.offeredCourse.section}</Col>
+            <Col>
+              Days:{" "}
               {item.offeredCourse.days.map((item: any) => (
                 <span> {item}</span>
               ))}
-            </div>
-          </div>
+            </Col>
+          </Row>
         );
       })}
     </div>
