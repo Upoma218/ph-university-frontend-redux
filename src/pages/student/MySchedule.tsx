@@ -15,16 +15,20 @@ const MySchedule = () => {
             style={{
               borderTop: "solid #d4d4d4 2px",
               padding: "10px",
-              width: "50%",
               border: "solid #d4d4d4 2px",
               margin: "20px",
             }}
             gutter={30}
           >
-            <Col>Course Name : {item.course.title}</Col>
-            <Col>Section: {item.offeredCourse.section}</Col>
-            <Col>
-              Days:{" "}
+            <Col span={3}><p style={{fontWeight: "bold"}}>Course Name : </p>{item.course.title}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>Department Name :</p> {item.academicDepartment.name}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>Section: </p>{item.offeredCourse.section}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>Start Time: </p>{item.offeredCourse.startTime}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>End Time: </p>{item.offeredCourse.endTime}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>Student Name: </p>{item.student.fullName}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>Faculty Name: </p>{item.faculty.fullName}</Col>
+            <Col span={3}><p style={{fontWeight: "bold"}}>Days:</p>
+              
               {item.offeredCourse.days.map((item: any) => (
                 <span> {item}</span>
               ))}

@@ -71,6 +71,7 @@ import { TCourse, TSemester } from '../../../types/courseManagement.type';
           };
         },
       }),
+  
       addCourse: builder.mutation({
         query: (data) => ({
           url: `/courses/create-course`,
@@ -107,7 +108,7 @@ import { TCourse, TSemester } from '../../../types/courseManagement.type';
           method: 'POST',
           body: data,
         }),
-        invalidatesTags: ['courses'],
+        invalidatesTags: ['courses', "offeredCourse"],
       }),
     }),
   });
