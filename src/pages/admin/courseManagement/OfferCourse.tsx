@@ -22,7 +22,7 @@ const OfferCourse = () => {
     { name: 'sort', value: 'year' },
     { name: 'status', value: 'UPCOMING' },
   ]);
-
+console.log(semesterRegistrationData)
   
   const { data: academicDepartmentData } = useGetAllDepartmentsQuery(undefined);
   const { data: academicFacultyData } = useGetAllAcademicFacultiesQuery(undefined);
@@ -38,18 +38,19 @@ const OfferCourse = () => {
       label: `${item.academicSemester.name} ${item.academicSemester.year}`,
     })
   );
-
-  const academicFacultyOptions = academicFacultyData?.data?.map((item) => ({
-    value: item._id,
-    label: item.name,
-  }));
-
   const academicDepartmentOptions = academicDepartmentData?.data?.map(
     (item: any) => ({
       value: item._id,
       label: item.name,
     })
   );
+
+  const academicFacultyOptions = academicFacultyData?.data?.map((item) => ({
+    value: item._id,
+    label: item.name,
+  }));
+
+ 
 
   const courseOptions = coursesData?.data?.map((item) => ({
     value: item._id,
@@ -95,14 +96,15 @@ const OfferCourse = () => {
             options={semesterRegistrationOptions}
           />
            <PHSelect
-            name="academicDepartment"
-            label="Academic Department"
-            options={academicDepartmentOptions}
-          />
-          <PHSelect
             name="academicFaculty"
             label="Academic Faculty"
             options={academicFacultyOptions}
+          />
+         
+           <PHSelect
+            name="academicDepartment"
+            label="Academic Department"
+            options={academicDepartmentOptions}
           />
          
           <PHSelectWithWatch

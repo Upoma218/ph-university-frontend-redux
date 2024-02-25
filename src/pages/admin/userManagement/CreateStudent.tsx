@@ -1,10 +1,10 @@
+import { Button, Col, Divider, Form, Input, Row } from "antd";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
+import PHDatePicker from "../../../components/form/PHDatePicker";
 import PHForm from "../../../components/form/PHForm";
 import PHInput from "../../../components/form/PHInput";
-import { Button, Col, Divider, Form, Input, Row } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
 import { bloodGroupOptions, genderOptions } from "../../../constants/global";
-import PHDatePicker from "../../../components/form/PHDatePicker";
 import {
   useGetAllDepartmentsQuery,
   useGetAllSemestersQuery,
@@ -260,8 +260,8 @@ const CreateStudent = () => {
               <PHSelect
                 options={semesterOptions}
                 disabled={sIsloading}
-                name="admissionSemester"
-                label="Admission Semester"
+                name="academicSemester"
+                label="Academic Semester"
               />
             </Col>
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
